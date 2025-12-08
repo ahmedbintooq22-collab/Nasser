@@ -1,0 +1,6 @@
+export { renderHomePage } from './home'
+export { renderAboutPage } from './about'
+export { renderServicesPage } from './services'
+export { renderPracticeAreasPage } from './practice-areas'
+export { renderArticlesPage, renderArticlePage } from './articles'
+export { renderContactPage } from './contact'
