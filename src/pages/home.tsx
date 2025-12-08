@@ -10,116 +10,124 @@ export const renderHomePage = (c: Context, lang: 'ar' | 'en') => {
 
   const content = `
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-20 md:py-32">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl ${isArabic ? 'mr-auto' : 'ml-auto'}">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-16 h-1 gold-bg"></div>
-                    <span class="text-gold font-semibold text-lg">
+    <section class="hero-gradient text-white relative">
+        <div class="container mx-auto px-6 py-24 md:py-32 relative z-10">
+            <div class="max-w-4xl ${isArabic ? 'mr-auto text-right' : 'ml-auto text-left'}">
+                <div class="inline-flex items-center gap-3 mb-8 bg-white bg-opacity-10 px-6 py-3 rounded-full backdrop-blur-sm">
+                    <i class="fas fa-balance-scale text-gold text-xl"></i>
+                    <span class="text-white font-semibold text-lg">
                         ${isArabic ? 'محامي واستشاري قانوني معتمد' : 'Licensed Lawyer and Legal Consultant'}
                     </span>
                 </div>
                 
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
                     ${isArabic 
-                      ? 'مكتب محاماة واستشارات قانونية<br>في مدينة العين'
-                      : 'Law Office and Legal Consultancy<br>in Al Ain City'
+                      ? 'نحمي حقوقك<br><span class="text-gold">القانونية</span>'
+                      : 'Protecting Your<br><span class="text-gold">Legal Rights</span>'
                     }
                 </h1>
                 
-                <p class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
+                <p class="text-xl md:text-2xl mb-10 text-gray-100 leading-relaxed max-w-2xl">
                     ${isArabic
-                      ? 'نحمي حقوقك القانونية بخبرة واحترافية في جميع أنحاء دولة الإمارات العربية المتحدة'
-                      : 'Protecting your legal rights with expertise and professionalism throughout the United Arab Emirates'
+                      ? 'مكتب محاماة واستشارات قانونية في مدينة العين، نقدم خدمات قانونية متخصصة بخبرة تتجاوز 15 عاماً'
+                      : 'Law Office and Legal Consultancy in Al Ain City, providing specialized legal services with over 15 years of experience'
                     }
                 </p>
                 
                 <div class="flex flex-wrap gap-4">
-                    <a href="${isArabic ? '/ar/contact' : '/en/contact'}" class="gold-bg text-white px-8 py-4 rounded-full font-bold text-lg hover-gold transition inline-flex items-center gap-2">
-                        <i class="fas fa-envelope"></i>
-                        <span>${isArabic ? 'تواصل معنا' : 'Contact Us'}</span>
+                    <a href="${isArabic ? '/ar/contact' : '/en/contact'}" 
+                       class="gold-bg text-white px-10 py-5 rounded-full font-bold text-lg hover-gold transition inline-flex items-center gap-3 shadow-2xl">
+                        <i class="fas fa-envelope text-xl"></i>
+                        <span>${isArabic ? 'استشارة قانونية' : 'Legal Consultation'}</span>
                     </a>
-                    <a href="https://wa.me/971501234567" target="_blank" class="bg-white text-dark-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition inline-flex items-center gap-2">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>${isArabic ? 'حجز استشارة' : 'Book Consultation'}</span>
+                    <a href="tel:+971501234567" 
+                       class="bg-white text-dark-green px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl transition inline-flex items-center gap-3">
+                        <i class="fas fa-phone text-xl"></i>
+                        <span>${isArabic ? 'اتصل الآن' : 'Call Now'}</span>
                     </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Wave -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-12 bg-gray-50 border-y border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-dark-green mb-2">15+</div>
+                    <div class="text-gray-600 font-medium">${isArabic ? 'سنة خبرة' : 'Years Experience'}</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-dark-green mb-2">500+</div>
+                    <div class="text-gray-600 font-medium">${isArabic ? 'عميل راضٍ' : 'Satisfied Clients'}</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-dark-green mb-2">95%</div>
+                    <div class="text-gray-600 font-medium">${isArabic ? 'نسبة النجاح' : 'Success Rate'}</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-dark-green mb-2">1000+</div>
+                    <div class="text-gray-600 font-medium">${isArabic ? 'قضية ناجحة' : 'Successful Cases'}</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About/Founder Section -->
-    <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="${isArabic ? 'md:order-2' : 'md:order-1'}">
-                    <img src="/static/lawyer-photo.jpg" alt="${isArabic ? 'المحامي ناصر شايع الهاجري' : 'Lawyer Nasser Shayea Al Hajeri'}" class="rounded-lg shadow-2xl w-full">
+                    <div class="relative">
+                        <div class="absolute -top-6 -${isArabic ? 'right' : 'left'}-6 w-72 h-72 bg-gold opacity-10 rounded-3xl"></div>
+                        <img src="/static/lawyer-photo.jpg" 
+                             alt="${isArabic ? 'المحامي ناصر شايع الهاجري' : 'Lawyer Nasser Shayea Al Hajeri'}" 
+                             class="relative rounded-3xl shadow-2xl w-full object-cover aspect-square">
+                    </div>
                 </div>
                 
-                <div class="${isArabic ? 'md:order-1' : 'md:order-2'}">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-1 gold-bg"></div>
-                        <span class="text-gold font-semibold">
+                <div class="${isArabic ? 'md:order-1 text-right' : 'md:order-2 text-left'}">
+                    <div class="inline-block mb-6">
+                        <span class="text-gold font-bold text-sm uppercase tracking-wider px-4 py-2 bg-gold bg-opacity-10 rounded-full">
                             ${isArabic ? 'المؤسس' : 'The Founder'}
                         </span>
                     </div>
                     
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-dark-green">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-dark-green">
                         ${isArabic 
                           ? 'ناصر شايع الهاجري'
                           : 'Nasser Shayea Al Hajeri'
                         }
                     </h2>
                     
-                    <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+                    <div class="section-divider ${isArabic ? 'mr-0' : 'ml-0'}"></div>
+                    
+                    <p class="text-gray-700 text-xl mb-6 leading-relaxed">
                         ${isArabic
-                          ? 'محامي ومستشار قانوني معتمد في دولة الإمارات العربية المتحدة، يتمتع بخبرة واسعة في مختلف المجالات القانونية والقضائية.'
-                          : 'Licensed Lawyer and Legal Consultant in the United Arab Emirates, with extensive experience in various legal and judicial fields.'
+                          ? 'محامي ومستشار قانوني معتمد في دولة الإمارات العربية المتحدة، يتمتع بخبرة واسعة تزيد عن 15 عاماً في مختلف المجالات القانونية والقضائية.'
+                          : 'Licensed Lawyer and Legal Consultant in the United Arab Emirates, with extensive experience of over 15 years in various legal and judicial fields.'
                         }
                     </p>
                     
-                    <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
                         ${isArabic
-                          ? 'نقدم في مكتبنا في مدينة العين خدمات قانونية شاملة تشمل التقاضي، الاستشارات القانونية، صياغة العقود، التحكيم، وحل النزاعات. نلتزم بأعلى معايير الاحترافية والأخلاقيات المهنية في خدمة عملائنا.'
-                          : 'At our office in Al Ain City, we provide comprehensive legal services including litigation, legal consultations, contract drafting, arbitration, and dispute resolution. We are committed to the highest standards of professionalism and professional ethics in serving our clients.'
+                          ? 'نقدم خدمات قانونية شاملة تشمل التقاضي، الاستشارات القانونية، صياغة العقود، التحكيم، وحل النزاعات بأعلى معايير الاحترافية.'
+                          : 'We provide comprehensive legal services including litigation, legal consultations, contract drafting, arbitration, and dispute resolution with the highest standards of professionalism.'
                         }
                     </p>
                     
-                    <div class="flex flex-wrap gap-6 mb-8">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 gold-bg rounded-full flex items-center justify-center">
-                                <i class="fas fa-balance-scale text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-dark-green">15+</div>
-                                <div class="text-gray-600 text-sm">${isArabic ? 'سنة خبرة' : 'Years Experience'}</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 gold-bg rounded-full flex items-center justify-center">
-                                <i class="fas fa-users text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-dark-green">500+</div>
-                                <div class="text-gray-600 text-sm">${isArabic ? 'عميل راضٍ' : 'Satisfied Clients'}</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 gold-bg rounded-full flex items-center justify-center">
-                                <i class="fas fa-trophy text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-dark-green">95%</div>
-                                <div class="text-gray-600 text-sm">${isArabic ? 'نسبة النجاح' : 'Success Rate'}</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="${isArabic ? '/ar/about' : '/en/about'}" class="gold-bg text-white px-6 py-3 rounded-full hover-gold transition inline-flex items-center gap-2 font-semibold">
+                    <a href="${isArabic ? '/ar/about' : '/en/about'}" 
+                       class="inline-flex items-center gap-3 text-gold font-bold text-lg hover:gap-4 transition-all group">
                         <span>${isArabic ? 'اقرأ المزيد' : 'Read More'}</span>
-                        <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
+                        <i class="fas fa-arrow-${isArabic ? 'left' : 'right'} group-hover:translate-x-${isArabic ? '-' : ''}1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -127,145 +135,146 @@ export const renderHomePage = (c: Context, lang: 'ar' | 'en') => {
     </section>
 
     <!-- Services Section -->
-    <section class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <div class="flex items-center justify-center gap-3 mb-4">
-                    <div class="w-12 h-1 gold-bg"></div>
-                    <span class="text-gold font-semibold">
-                        ${isArabic ? 'ما نقدمه' : 'What We Offer'}
-                    </span>
-                    <div class="w-12 h-1 gold-bg"></div>
-                </div>
-                
-                <h2 class="text-3xl md:text-5xl font-bold text-dark-green mb-4">
+    <section class="py-20 md:py-32 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold text-sm uppercase tracking-wider px-4 py-2 bg-white rounded-full inline-block mb-4">
+                    ${isArabic ? 'ما نقدمه' : 'What We Offer'}
+                </span>
+                <h2 class="text-4xl md:text-6xl font-bold text-dark-green mb-6">
                     ${isArabic ? 'خدماتنا القانونية' : 'Our Legal Services'}
                 </h2>
-                
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                <div class="section-divider"></div>
+                <p class="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
                     ${isArabic
-                      ? 'نقدم مجموعة شاملة من الخدمات القانونية لتلبية جميع احتياجاتكم القانونية'
-                      : 'We offer a comprehensive range of legal services to meet all your legal needs'
+                      ? 'نقدم مجموعة شاملة من الخدمات القانونية المتخصصة لحماية حقوقكم وتحقيق مصالحكم'
+                      : 'We offer a comprehensive range of specialized legal services to protect your rights and achieve your interests'
                     }
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service Card 1 -->
-                <div class="service-card bg-white rounded-lg p-8 shadow-lg">
-                    <div class="w-16 h-16 gold-bg rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-gavel text-white text-2xl"></i>
+                <div class="service-card rounded-2xl p-8 group">
+                    <div class="w-20 h-20 gold-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-gavel text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-dark-green">
+                    <h3 class="text-2xl font-bold mb-4 text-dark-green">
                         ${isArabic ? 'التقاضي والترافع' : 'Litigation & Advocacy'}
                     </h3>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         ${isArabic
                           ? 'تمثيل قانوني احترافي أمام جميع المحاكم والهيئات القضائية في دولة الإمارات'
                           : 'Professional legal representation before all courts and judicial bodies in the UAE'
                         }
                     </p>
-                    <a href="${isArabic ? '/ar/services' : '/en/services'}" class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                    <a href="${isArabic ? '/ar/services' : '/en/services'}" 
+                       class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
                         <span>${isArabic ? 'عرض المزيد' : 'Learn More'}</span>
                         <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                     </a>
                 </div>
 
                 <!-- Service Card 2 -->
-                <div class="service-card bg-white rounded-lg p-8 shadow-lg">
-                    <div class="w-16 h-16 gold-bg rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-handshake text-white text-2xl"></i>
+                <div class="service-card rounded-2xl p-8 group">
+                    <div class="w-20 h-20 gold-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-handshake text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-dark-green">
+                    <h3 class="text-2xl font-bold mb-4 text-dark-green">
                         ${isArabic ? 'الاستشارات القانونية' : 'Legal Consultations'}
                     </h3>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         ${isArabic
                           ? 'استشارات قانونية متخصصة لحماية مصالحكم وتوجيهكم نحو القرارات الصحيحة'
                           : 'Specialized legal consultations to protect your interests and guide you towards the right decisions'
                         }
                     </p>
-                    <a href="${isArabic ? '/ar/services' : '/en/services'}" class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                    <a href="${isArabic ? '/ar/services' : '/en/services'}" 
+                       class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
                         <span>${isArabic ? 'عرض المزيد' : 'Learn More'}</span>
                         <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                     </a>
                 </div>
 
                 <!-- Service Card 3 -->
-                <div class="service-card bg-white rounded-lg p-8 shadow-lg">
-                    <div class="w-16 h-16 gold-bg rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-file-contract text-white text-2xl"></i>
+                <div class="service-card rounded-2xl p-8 group">
+                    <div class="w-20 h-20 gold-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-contract text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-dark-green">
+                    <h3 class="text-2xl font-bold mb-4 text-dark-green">
                         ${isArabic ? 'صياغة العقود' : 'Contract Drafting'}
                     </h3>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         ${isArabic
                           ? 'إعداد وصياغة جميع أنواع العقود والاتفاقيات القانونية بدقة واحترافية'
                           : 'Preparing and drafting all types of contracts and legal agreements with precision and professionalism'
                         }
                     </p>
-                    <a href="${isArabic ? '/ar/services' : '/en/services'}" class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                    <a href="${isArabic ? '/ar/services' : '/en/services'}" 
+                       class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
                         <span>${isArabic ? 'عرض المزيد' : 'Learn More'}</span>
                         <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                     </a>
                 </div>
 
                 <!-- Service Card 4 -->
-                <div class="service-card bg-white rounded-lg p-8 shadow-lg">
-                    <div class="w-16 h-16 gold-bg rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-users text-white text-2xl"></i>
+                <div class="service-card rounded-2xl p-8 group">
+                    <div class="w-20 h-20 gold-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-users text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-dark-green">
+                    <h3 class="text-2xl font-bold mb-4 text-dark-green">
                         ${isArabic ? 'التحكيم وحل النزاعات' : 'Arbitration & Dispute Resolution'}
                     </h3>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         ${isArabic
                           ? 'حل النزاعات بطرق ودية وفعالة من خلال التحكيم والوساطة'
                           : 'Resolving disputes through friendly and effective arbitration and mediation methods'
                         }
                     </p>
-                    <a href="${isArabic ? '/ar/services' : '/en/services'}" class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                    <a href="${isArabic ? '/ar/services' : '/en/services'}" 
+                       class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
                         <span>${isArabic ? 'عرض المزيد' : 'Learn More'}</span>
                         <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                     </a>
                 </div>
 
                 <!-- Service Card 5 -->
-                <div class="service-card bg-white rounded-lg p-8 shadow-lg">
-                    <div class="w-16 h-16 gold-bg rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-money-bill-wave text-white text-2xl"></i>
+                <div class="service-card rounded-2xl p-8 group">
+                    <div class="w-20 h-20 gold-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-money-bill-wave text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-dark-green">
+                    <h3 class="text-2xl font-bold mb-4 text-dark-green">
                         ${isArabic ? 'تحصيل الديون' : 'Debt Collection'}
                     </h3>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         ${isArabic
                           ? 'استرداد حقوقكم المالية بطرق قانونية فعالة وسريعة'
                           : 'Recovering your financial rights through effective and swift legal methods'
                         }
                     </p>
-                    <a href="${isArabic ? '/ar/services' : '/en/services'}" class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                    <a href="${isArabic ? '/ar/services' : '/en/services'}" 
+                       class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
                         <span>${isArabic ? 'عرض المزيد' : 'Learn More'}</span>
                         <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                     </a>
                 </div>
 
                 <!-- Service Card 6 -->
-                <div class="service-card bg-white rounded-lg p-8 shadow-lg">
-                    <div class="w-16 h-16 gold-bg rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-briefcase text-white text-2xl"></i>
+                <div class="service-card rounded-2xl p-8 group">
+                    <div class="w-20 h-20 gold-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-briefcase text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-dark-green">
+                    <h3 class="text-2xl font-bold mb-4 text-dark-green">
                         ${isArabic ? 'القضايا العمالية' : 'Labor Cases'}
                     </h3>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
                         ${isArabic
                           ? 'حماية حقوق العمال وأصحاب العمل وفقاً لقانون العمل الإماراتي'
                           : 'Protecting the rights of workers and employers according to UAE labor law'
                         }
                     </p>
-                    <a href="${isArabic ? '/ar/services' : '/en/services'}" class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                    <a href="${isArabic ? '/ar/services' : '/en/services'}" 
+                       class="text-gold font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
                         <span>${isArabic ? 'عرض المزيد' : 'Learn More'}</span>
                         <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                     </a>
@@ -275,87 +284,71 @@ export const renderHomePage = (c: Context, lang: 'ar' | 'en') => {
     </section>
 
     <!-- Practice Areas Section -->
-    <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <div class="flex items-center justify-center gap-3 mb-4">
-                    <div class="w-12 h-1 gold-bg"></div>
-                    <span class="text-gold font-semibold">
-                        ${isArabic ? 'تخصصاتنا' : 'Our Expertise'}
-                    </span>
-                    <div class="w-12 h-1 gold-bg"></div>
-                </div>
-                
-                <h2 class="text-3xl md:text-5xl font-bold text-dark-green mb-4">
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold text-sm uppercase tracking-wider px-4 py-2 bg-gray-50 rounded-full inline-block mb-4">
+                    ${isArabic ? 'تخصصاتنا' : 'Our Expertise'}
+                </span>
+                <h2 class="text-4xl md:text-6xl font-bold text-dark-green mb-6">
                     ${isArabic ? 'مجالات الممارسة' : 'Practice Areas'}
                 </h2>
-                
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    ${isArabic
-                      ? 'نغطي جميع المجالات القانونية لضمان حماية شاملة لحقوقكم'
-                      : 'We cover all legal fields to ensure comprehensive protection of your rights'
-                    }
-                </p>
+                <div class="section-divider"></div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="${isArabic ? '/ar/practice-areas/commercial' : '/en/practice-areas/commercial'}" class="group bg-gray-50 rounded-lg p-6 hover:bg-dark-green transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fas fa-building text-3xl text-gold"></i>
-                        <h3 class="text-xl font-bold text-dark-green group-hover:text-white transition">
-                            ${isArabic ? 'القضايا التجارية' : 'Commercial Cases'}
-                        </h3>
-                    </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="${isArabic ? '/ar/practice-areas/commercial' : '/en/practice-areas/commercial'}" 
+                   class="group bg-gray-50 rounded-2xl p-8 hover:bg-dark-green transition-all duration-300">
+                    <i class="fas fa-building text-5xl text-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold text-dark-green group-hover:text-white transition">
+                        ${isArabic ? 'القضايا التجارية' : 'Commercial Cases'}
+                    </h3>
                 </a>
 
-                <a href="${isArabic ? '/ar/practice-areas/civil' : '/en/practice-areas/civil'}" class="group bg-gray-50 rounded-lg p-6 hover:bg-dark-green transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fas fa-balance-scale text-3xl text-gold"></i>
-                        <h3 class="text-xl font-bold text-dark-green group-hover:text-white transition">
-                            ${isArabic ? 'القضايا المدنية' : 'Civil Cases'}
-                        </h3>
-                    </div>
+                <a href="${isArabic ? '/ar/practice-areas/civil' : '/en/practice-areas/civil'}" 
+                   class="group bg-gray-50 rounded-2xl p-8 hover:bg-dark-green transition-all duration-300">
+                    <i class="fas fa-balance-scale text-5xl text-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold text-dark-green group-hover:text-white transition">
+                        ${isArabic ? 'القضايا المدنية' : 'Civil Cases'}
+                    </h3>
                 </a>
 
-                <a href="${isArabic ? '/ar/practice-areas/labor' : '/en/practice-areas/labor'}" class="group bg-gray-50 rounded-lg p-6 hover:bg-dark-green transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fas fa-hard-hat text-3xl text-gold"></i>
-                        <h3 class="text-xl font-bold text-dark-green group-hover:text-white transition">
-                            ${isArabic ? 'القضايا العمالية' : 'Labor Cases'}
-                        </h3>
-                    </div>
+                <a href="${isArabic ? '/ar/practice-areas/labor' : '/en/practice-areas/labor'}" 
+                   class="group bg-gray-50 rounded-2xl p-8 hover:bg-dark-green transition-all duration-300">
+                    <i class="fas fa-hard-hat text-5xl text-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold text-dark-green group-hover:text-white transition">
+                        ${isArabic ? 'القضايا العمالية' : 'Labor Cases'}
+                    </h3>
                 </a>
 
-                <a href="${isArabic ? '/ar/practice-areas/family' : '/en/practice-areas/family'}" class="group bg-gray-50 rounded-lg p-6 hover:bg-dark-green transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fas fa-home text-3xl text-gold"></i>
-                        <h3 class="text-xl font-bold text-dark-green group-hover:text-white transition">
-                            ${isArabic ? 'قضايا الأحوال الشخصية' : 'Family Law'}
-                        </h3>
-                    </div>
+                <a href="${isArabic ? '/ar/practice-areas/family' : '/en/practice-areas/family'}" 
+                   class="group bg-gray-50 rounded-2xl p-8 hover:bg-dark-green transition-all duration-300">
+                    <i class="fas fa-home text-5xl text-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold text-dark-green group-hover:text-white transition">
+                        ${isArabic ? 'قضايا الأحوال الشخصية' : 'Family Law'}
+                    </h3>
                 </a>
 
-                <a href="${isArabic ? '/ar/practice-areas/corporate' : '/en/practice-areas/corporate'}" class="group bg-gray-50 rounded-lg p-6 hover:bg-dark-green transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fas fa-handshake text-3xl text-gold"></i>
-                        <h3 class="text-xl font-bold text-dark-green group-hover:text-white transition">
-                            ${isArabic ? 'قضايا الشركات' : 'Corporate Law'}
-                        </h3>
-                    </div>
+                <a href="${isArabic ? '/ar/practice-areas/corporate' : '/en/practice-areas/corporate'}" 
+                   class="group bg-gray-50 rounded-2xl p-8 hover:bg-dark-green transition-all duration-300">
+                    <i class="fas fa-handshake text-5xl text-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold text-dark-green group-hover:text-white transition">
+                        ${isArabic ? 'قضايا الشركات' : 'Corporate Law'}
+                    </h3>
                 </a>
 
-                <a href="${isArabic ? '/ar/practice-areas/real-estate' : '/en/practice-areas/real-estate'}" class="group bg-gray-50 rounded-lg p-6 hover:bg-dark-green transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fas fa-key text-3xl text-gold"></i>
-                        <h3 class="text-xl font-bold text-dark-green group-hover:text-white transition">
-                            ${isArabic ? 'قضايا الإيجارات والعقارات' : 'Real Estate & Rental'}
-                        </h3>
-                    </div>
+                <a href="${isArabic ? '/ar/practice-areas/real-estate' : '/en/practice-areas/real-estate'}" 
+                   class="group bg-gray-50 rounded-2xl p-8 hover:bg-dark-green transition-all duration-300">
+                    <i class="fas fa-key text-5xl text-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold text-dark-green group-hover:text-white transition">
+                        ${isArabic ? 'قضايا الإيجارات والعقارات' : 'Real Estate & Rental'}
+                    </h3>
                 </a>
             </div>
 
             <div class="text-center mt-12">
-                <a href="${isArabic ? '/ar/practice-areas' : '/en/practice-areas'}" class="gold-bg text-white px-8 py-4 rounded-full hover-gold transition inline-flex items-center gap-2 font-semibold">
+                <a href="${isArabic ? '/ar/practice-areas' : '/en/practice-areas'}" 
+                   class="gold-bg text-white px-10 py-5 rounded-full hover-gold transition inline-flex items-center gap-3 font-bold text-lg shadow-xl">
                     <span>${isArabic ? 'عرض جميع المجالات' : 'View All Areas'}</span>
                     <i class="fas fa-arrow-${isArabic ? 'left' : 'right'}"></i>
                 </a>
@@ -363,126 +356,16 @@ export const renderHomePage = (c: Context, lang: 'ar' | 'en') => {
         </div>
     </section>
 
-    <!-- Google Reviews Section -->
-    <section class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <div class="flex items-center justify-center gap-3 mb-4">
-                    <div class="w-12 h-1 gold-bg"></div>
-                    <span class="text-gold font-semibold">
-                        ${isArabic ? 'آراء عملائنا' : 'Client Testimonials'}
-                    </span>
-                    <div class="w-12 h-1 gold-bg"></div>
-                </div>
-                
-                <h2 class="text-3xl md:text-5xl font-bold text-dark-green mb-4">
-                    ${isArabic ? 'ماذا يقول عملاؤنا' : 'What Our Clients Say'}
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- Review 1 -->
-                <div class="bg-white rounded-lg p-8 shadow-lg">
-                    <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic">
-                        "${isArabic 
-                          ? 'خدمة متميزة واحترافية عالية. تعاملت مع المكتب في قضية تجارية وكانت النتيجة أفضل من المتوقع.'
-                          : 'Excellent service and high professionalism. I dealt with the office in a commercial case and the result was better than expected.'
-                        }"
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <div class="font-bold text-dark-green">${isArabic ? 'أحمد المنصوري' : 'Ahmed Al Mansouri'}</div>
-                            <div class="text-sm text-gray-500">${isArabic ? 'رجل أعمال' : 'Businessman'}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-white rounded-lg p-8 shadow-lg">
-                    <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic">
-                        "${isArabic 
-                          ? 'مكتب موثوق به وذو خبرة واسعة. ساعدوني في حل قضيتي العمالية بكل احترافية وسرعة.'
-                          : 'A reliable office with extensive experience. They helped me resolve my labor case with professionalism and speed.'
-                        }"
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <div class="font-bold text-dark-green">${isArabic ? 'فاطمة الكتبي' : 'Fatima Al Ketbi'}</div>
-                            <div class="text-sm text-gray-500">${isArabic ? 'موظفة' : 'Employee'}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-white rounded-lg p-8 shadow-lg">
-                    <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic">
-                        "${isArabic 
-                          ? 'أنصح بشدة بالتعامل مع هذا المكتب. فريق محترف وملتزم بحماية حقوق العملاء.'
-                          : 'I highly recommend dealing with this office. A professional team committed to protecting clients\' rights.'
-                        }"
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                            <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                            <div class="font-bold text-dark-green">${isArabic ? 'سالم النعيمي' : 'Salem Al Nuaimi'}</div>
-                            <div class="text-sm text-gray-500">${isArabic ? 'صاحب شركة' : 'Company Owner'}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Google Reviews Button -->
-            <div class="text-center">
-                <a href="https://g.page/r/YOUR_GOOGLE_PLACE_ID/review" target="_blank" class="inline-flex items-center gap-3 bg-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition">
-                    <i class="fab fa-google text-3xl" style="color: #4285F4;"></i>
-                    <div class="text-${isArabic ? 'right' : 'left'}">
-                        <div class="font-bold text-dark-green">${isArabic ? 'اترك تقييمك على جوجل' : 'Leave Your Review on Google'}</div>
-                        <div class="text-sm text-gray-600">${isArabic ? 'شاركنا رأيك وتجربتك' : 'Share your opinion and experience'}</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Section -->
-    <section class="hero-gradient text-white py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+    <section class="hero-gradient text-white py-20 md:py-28 relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
                 ${isArabic 
                   ? 'هل تحتاج إلى استشارة قانونية؟'
                   : 'Do You Need Legal Consultation?'
                 }
             </h2>
-            <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
+            <p class="text-xl md:text-2xl mb-10 text-gray-100 max-w-3xl mx-auto leading-relaxed">
                 ${isArabic
                   ? 'في مكتبنا في مدينة العين نرحب بتواصلك لأي استشارة قانونية. نحن هنا لحماية حقوقك'
                   : 'At our office in Al Ain City, we welcome your contact for any legal consultation. We are here to protect your rights'
@@ -490,16 +373,19 @@ export const renderHomePage = (c: Context, lang: 'ar' | 'en') => {
             </p>
             
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="tel:+971501234567" class="bg-white text-dark-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition inline-flex items-center gap-2">
-                    <i class="fas fa-phone"></i>
+                <a href="tel:+971501234567" 
+                   class="bg-white text-dark-green px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl transition inline-flex items-center gap-3">
+                    <i class="fas fa-phone text-xl"></i>
                     <span>${isArabic ? 'اتصل الآن' : 'Call Now'}</span>
                 </a>
-                <a href="https://wa.me/971501234567" target="_blank" class="gold-bg text-white px-8 py-4 rounded-full font-bold text-lg hover-gold transition inline-flex items-center gap-2">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>${isArabic ? 'أرسل رسالة' : 'Send Message'}</span>
+                <a href="https://wa.me/971501234567" target="_blank" 
+                   class="bg-green-600 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-green-700 transition inline-flex items-center gap-3 shadow-xl">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>${isArabic ? 'واتساب' : 'WhatsApp'}</span>
                 </a>
-                <a href="${isArabic ? '/ar/contact' : '/en/contact'}" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-dark-green transition inline-flex items-center gap-2">
-                    <i class="fas fa-envelope"></i>
+                <a href="${isArabic ? '/ar/contact' : '/en/contact'}" 
+                   class="gold-bg text-white px-10 py-5 rounded-full font-bold text-lg hover-gold transition inline-flex items-center gap-3 shadow-xl">
+                    <i class="fas fa-envelope text-xl"></i>
                     <span>${isArabic ? 'نموذج التواصل' : 'Contact Form'}</span>
                 </a>
             </div>

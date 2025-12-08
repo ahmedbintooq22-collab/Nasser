@@ -20,11 +20,30 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: ${isArabic ? "'Tajawal', sans-serif" : "'Poppins', sans-serif"};
+            line-height: 1.7;
+            color: #2d3748;
+            overflow-x: hidden;
         }
         .hero-gradient {
             background: linear-gradient(135deg, #0B3B2E 0%, #1a5f4a 100%);
+            position: relative;
+        }
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L50 50L0 100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/><path d="M50 0L100 50L50 100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            opacity: 0.5;
         }
         .gold-text {
             color: #C9A44F;
@@ -37,45 +56,61 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
         }
         .hover-gold:hover {
             background-color: #B89440;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(184, 148, 64, 0.3);
         }
         .service-card {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            background: white;
         }
         .service-card:hover {
             border-color: #C9A44F;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(201, 164, 79, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(201, 164, 79, 0.15);
         }
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            ${isArabic ? 'left: 40px;' : 'right: 40px;'}
-            background-color: #25d366;
+            width: 65px;
+            height: 65px;
+            bottom: 30px;
+            ${isArabic ? 'left: 30px;' : 'right: 30px;'}
+            background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
             color: #FFF;
-            border-radius: 50px;
+            border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+            }
         }
         .whatsapp-float:hover {
-            background-color: #20ba5a;
-            transform: scale(1.1);
+            background: linear-gradient(135deg, #20ba5a 0%, #1fa851 100%);
+            transform: scale(1.1) rotate(5deg);
+            animation: none;
         }
         .top-bar {
             background-color: #0B3B2E;
             color: white;
+            border-bottom: 2px solid #C9A44F;
         }
         .nav-link {
             position: relative;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            font-weight: 500;
         }
         .nav-link:hover {
             color: #C9A44F;
@@ -84,22 +119,38 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -5px;
+            height: 3px;
+            bottom: 0;
             ${isArabic ? 'right: 0;' : 'left: 0;'}
-            background-color: #C9A44F;
-            transition: width 0.3s;
+            background: linear-gradient(90deg, #C9A44F 0%, #B89440 100%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
         }
         .nav-link:hover::after {
             width: 100%;
         }
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #C9A44F 0%, #B89440 100%);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
         @media (max-width: 768px) {
             .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
                 bottom: 20px;
                 ${isArabic ? 'left: 20px;' : 'right: 20px;'}
+            }
+            .container {
+                padding: 0 1rem;
             }
         }
     </style>
