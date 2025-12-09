@@ -16,7 +16,7 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
         <title>{title}</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
         <style dangerouslySetInnerHTML={{__html: `
         * {
             margin: 0;
@@ -25,13 +25,13 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
         }
         body {
             font-family: ${isArabic ? "'Tajawal', sans-serif" : "'Poppins', sans-serif"};
-            line-height: 1.8;
-            color: #1a1a1a;
+            line-height: 1.7;
+            color: #2d3748;
             overflow-x: hidden;
-            background: #0a0a0a;
+            background: #ffffff;
         }
         .hero-gradient {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
             position: relative;
             overflow: hidden;
         }
@@ -42,97 +42,74 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(ellipse at top, rgba(218, 165, 32, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(218, 165, 32, 0.1) 0%, transparent 50%);
-            animation: shimmer 8s ease-in-out infinite;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="rgba(59, 130, 246, 0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
         }
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
+        .primary-text {
+            color: #1e40af;
         }
-        .hero-gradient::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(90deg, rgba(218, 165, 32, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(218, 165, 32, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+        .secondary-text {
+            color: #0284c7;
         }
-        .gold-text {
-            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .accent-text {
+            color: #f59e0b;
         }
-        .gold-bg {
-            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
-            box-shadow: 0 8px 32px rgba(218, 165, 32, 0.4);
+        .primary-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
         }
-        .dark-green-bg {
-            background: #0a0a0a;
+        .secondary-bg {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
         }
-        .hover-gold:hover {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        .accent-bg {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.25);
         }
-        .luxury-card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border: 2px solid rgba(218, 165, 32, 0.3);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+        .hover-primary:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
         }
-        .luxury-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s;
+        .hover-accent:hover {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35);
         }
-        .luxury-card:hover::before {
-            opacity: 1;
+        .card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
-        .luxury-card:hover {
-            border-color: rgba(255, 215, 0, 0.8);
-            transform: translateY(-12px);
-            box-shadow: 
-                0 25px 50px rgba(218, 165, 32, 0.3),
-                0 0 100px rgba(255, 215, 0, 0.2);
+        .card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
         }
         .service-card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border: 2px solid rgba(218, 165, 32, 0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            transition: all 0.4s ease;
             overflow: hidden;
         }
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        .service-card:hover::after {
-            left: 100%;
-        }
         .service-card:hover {
-            border-color: rgba(255, 215, 0, 0.6);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(218, 165, 32, 0.4);
+            border-color: #0ea5e9;
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(14, 165, 233, 0.15);
+        }
+        .review-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .review-card:hover {
+            border-color: #fbbf24;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15);
         }
         .whatsapp-float {
             position: fixed;
@@ -167,21 +144,20 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
             animation: none;
         }
         .top-bar {
-            background: linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-            color: #DAA520;
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+            background: linear-gradient(90deg, #1e40af 0%, #3b82f6 50%, #1e40af 100%);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
             backdrop-filter: blur(10px);
         }
         .nav-link {
             position: relative;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             padding: 8px 0;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
         .nav-link:hover {
-            color: #FFD700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            color: #3b82f6;
         }
         .nav-link::after {
             content: '';
@@ -190,26 +166,20 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
             height: 3px;
             bottom: 0;
             ${isArabic ? 'right: 0;' : 'left: 0;'}
-            background: linear-gradient(90deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
+            background: linear-gradient(90deg, #3b82f6 0%, #0ea5e9 50%, #3b82f6 100%);
             transition: width 0.4s ease;
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
         }
         .nav-link:hover::after {
             width: 100%;
         }
         .section-divider {
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent 0%, #DAA520 20%, #FFD700 50%, #DAA520 80%, transparent 100%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #3b82f6 20%, #0ea5e9 50%, #3b82f6 80%, transparent 100%);
             margin: 0 auto 2rem;
             border-radius: 2px;
-            box-shadow: 0 0 20px rgba(218, 165, 32, 0.6);
-            animation: glow 2s ease-in-out infinite;
-        }
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(218, 165, 32, 0.6); }
-            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
         }
         .container {
             max-width: 1280px;
@@ -230,23 +200,23 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
         }
     `}}></style>
     </head>
-    <body class="bg-black">
+    <body class="bg-white">
         {/* Top Bar */}
         <div class="top-bar py-2">
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center text-sm">
                     <div class="flex gap-6">
-                        <a href="tel:+971501234567" class="hover:text-gold transition flex items-center gap-2">
+                        <a href="tel:+971501234567" class="hover:text-blue-200 transition flex items-center gap-2">
                             <i class="fas fa-phone"></i>
                             <span>+971 50 123 4567</span>
                         </a>
-                        <a href="https://wa.me/971501234567" target="_blank" class="hover:text-gold transition flex items-center gap-2">
+                        <a href="https://wa.me/971501234567" target="_blank" class="hover:text-blue-200 transition flex items-center gap-2">
                             <i class="fab fa-whatsapp"></i>
                             <span>{isArabic ? 'واتساب' : 'WhatsApp'}</span>
                         </a>
                     </div>
                     <div class="flex gap-4">
-                        <a href={isArabic ? '/en' : '/ar'} class="hover:text-gold transition">
+                        <a href={isArabic ? '/en' : '/ar'} class="hover:text-blue-200 transition font-semibold">
                             {isArabic ? 'English' : 'عربي'}
                         </a>
                     </div>
@@ -255,9 +225,9 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
         </div>
 
         {/* Main Navigation */}
-        <nav class="bg-black bg-opacity-95 backdrop-blur-md shadow-2xl sticky top-0 z-50 border-b border-gold border-opacity-20">
+        <nav class="bg-white bg-opacity-95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
             <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center py-4">
+                <div class={`flex justify-between items-center py-4 ${isArabic ? 'flex-row-reverse' : ''}`}>
                     {/* Logo */}
                     <div class="flex items-center">
                         <a href={isArabic ? '/' : '/en'}>
@@ -266,29 +236,29 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div class="hidden md:flex gap-8 items-center">
-                        <a href={isArabic ? '/' : '/en'} class="nav-link font-medium text-white">
+                    <div class={`hidden md:flex gap-8 items-center ${isArabic ? 'flex-row-reverse' : ''}`}>
+                        <a href={isArabic ? '/' : '/en'} class="nav-link font-medium text-gray-700">
                             {isArabic ? 'الرئيسية' : 'Home'}
                         </a>
-                        <a href={isArabic ? '/ar/about' : '/en/about'} class="nav-link font-medium text-white">
+                        <a href={isArabic ? '/ar/about' : '/en/about'} class="nav-link font-medium text-gray-700">
                             {isArabic ? 'من نحن' : 'About Us'}
                         </a>
-                        <a href={isArabic ? '/ar/services' : '/en/services'} class="nav-link font-medium text-white">
+                        <a href={isArabic ? '/ar/services' : '/en/services'} class="nav-link font-medium text-gray-700">
                             {isArabic ? 'خدماتنا' : 'Our Services'}
                         </a>
-                        <a href={isArabic ? '/ar/practice-areas' : '/en/practice-areas'} class="nav-link font-medium text-white">
+                        <a href={isArabic ? '/ar/practice-areas' : '/en/practice-areas'} class="nav-link font-medium text-gray-700">
                             {isArabic ? 'مجالات الممارسة' : 'Practice Areas'}
                         </a>
-                        <a href={isArabic ? '/ar/articles' : '/en/articles'} class="nav-link font-medium text-white">
+                        <a href={isArabic ? '/ar/articles' : '/en/articles'} class="nav-link font-medium text-gray-700">
                             {isArabic ? 'المقالات' : 'Articles'}
                         </a>
-                        <a href={isArabic ? '/ar/contact' : '/en/contact'} class="gold-bg text-black px-8 py-3 rounded-full hover-gold font-bold">
+                        <a href={isArabic ? '/ar/contact' : '/en/contact'} class="primary-bg text-white px-8 py-3 rounded-full hover-primary font-bold">
                             {isArabic ? 'تواصل معنا' : 'Contact Us'}
                         </a>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button id="mobile-menu-button" class="md:hidden text-gold">
+                    <button id="mobile-menu-button" class="md:hidden text-blue-600">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -296,22 +266,22 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
                 {/* Mobile Menu */}
                 <div id="mobile-menu" class="hidden md:hidden pb-4">
                     <div class="flex flex-col gap-4">
-                        <a href={isArabic ? '/' : '/en'} class="font-medium text-white hover:text-gold">
+                        <a href={isArabic ? '/' : '/en'} class="font-medium text-gray-700 hover:text-blue-600">
                             {isArabic ? 'الرئيسية' : 'Home'}
                         </a>
-                        <a href={isArabic ? '/ar/about' : '/en/about'} class="font-medium text-white hover:text-gold">
+                        <a href={isArabic ? '/ar/about' : '/en/about'} class="font-medium text-gray-700 hover:text-blue-600">
                             {isArabic ? 'من نحن' : 'About Us'}
                         </a>
-                        <a href={isArabic ? '/ar/services' : '/en/services'} class="font-medium text-white hover:text-gold">
+                        <a href={isArabic ? '/ar/services' : '/en/services'} class="font-medium text-gray-700 hover:text-blue-600">
                             {isArabic ? 'خدماتنا' : 'Our Services'}
                         </a>
-                        <a href={isArabic ? '/ar/practice-areas' : '/en/practice-areas'} class="font-medium text-white hover:text-gold">
+                        <a href={isArabic ? '/ar/practice-areas' : '/en/practice-areas'} class="font-medium text-gray-700 hover:text-blue-600">
                             {isArabic ? 'مجالات الممارسة' : 'Practice Areas'}
                         </a>
-                        <a href={isArabic ? '/ar/articles' : '/en/articles'} class="font-medium text-white hover:text-gold">
+                        <a href={isArabic ? '/ar/articles' : '/en/articles'} class="font-medium text-gray-700 hover:text-blue-600">
                             {isArabic ? 'المقالات' : 'Articles'}
                         </a>
-                        <a href={isArabic ? '/ar/contact' : '/en/contact'} class="gold-bg text-black px-6 py-2 rounded-full text-center font-bold">
+                        <a href={isArabic ? '/ar/contact' : '/en/contact'} class="primary-bg text-white px-6 py-2 rounded-full text-center font-bold">
                             {isArabic ? 'تواصل معنا' : 'Contact Us'}
                         </a>
                     </div>
@@ -325,16 +295,16 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
         </main>
 
         {/* Footer */}
-        <footer class="bg-black text-white py-12 border-t border-gold border-opacity-20">
+        <footer class="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-700 py-12 border-t border-gray-200">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-4 gap-8">
                     {/* About Column */}
                     <div>
-                        <img src="/static/logo.png" alt="Logo" class="h-16 mb-4 brightness-0 invert"/>
-                        <h3 class="text-xl font-bold mb-3 gold-text">
+                        <img src="/static/logo.png" alt="Logo" class="h-16 mb-4"/>
+                        <h3 class="text-xl font-bold mb-3 primary-text">
                             {isArabic ? 'ناصر شايع الهاجري' : 'Nasser Shayea Al Hajeri'}
                         </h3>
-                        <p class="text-gray-300 text-sm">
+                        <p class="text-gray-600 text-sm">
                             {isArabic 
                               ? 'محامي واستشاري قانوني في مدينة العين، نقدم خدمات قانونية شاملة ومتميزة.'
                               : 'Lawyer and Legal Consultant in Al Ain City, providing comprehensive legal services.'
@@ -344,53 +314,53 @@ export const Layout = ({ title, lang, children }: LayoutProps) => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 class="text-lg font-bold mb-4 gold-text">
+                        <h4 class="text-lg font-bold mb-4 primary-text">
                             {isArabic ? 'روابط سريعة' : 'Quick Links'}
                         </h4>
                         <ul class="space-y-2 text-sm">
-                            <li><a href={isArabic ? '/' : '/en'} class="hover:text-gold transition">{isArabic ? 'الرئيسية' : 'Home'}</a></li>
-                            <li><a href={isArabic ? '/ar/about' : '/en/about'} class="hover:text-gold transition">{isArabic ? 'من نحن' : 'About Us'}</a></li>
-                            <li><a href={isArabic ? '/ar/services' : '/en/services'} class="hover:text-gold transition">{isArabic ? 'خدماتنا' : 'Our Services'}</a></li>
-                            <li><a href={isArabic ? '/ar/contact' : '/en/contact'} class="hover:text-gold transition">{isArabic ? 'تواصل معنا' : 'Contact'}</a></li>
+                            <li><a href={isArabic ? '/' : '/en'} class="hover:text-blue-600 transition">{isArabic ? 'الرئيسية' : 'Home'}</a></li>
+                            <li><a href={isArabic ? '/ar/about' : '/en/about'} class="hover:text-blue-600 transition">{isArabic ? 'من نحن' : 'About Us'}</a></li>
+                            <li><a href={isArabic ? '/ar/services' : '/en/services'} class="hover:text-blue-600 transition">{isArabic ? 'خدماتنا' : 'Our Services'}</a></li>
+                            <li><a href={isArabic ? '/ar/contact' : '/en/contact'} class="hover:text-blue-600 transition">{isArabic ? 'تواصل معنا' : 'Contact'}</a></li>
                         </ul>
                     </div>
 
                     {/* Practice Areas */}
                     <div>
-                        <h4 class="text-lg font-bold mb-4 gold-text">
+                        <h4 class="text-lg font-bold mb-4 primary-text">
                             {isArabic ? 'مجالات الممارسة' : 'Practice Areas'}
                         </h4>
                         <ul class="space-y-2 text-sm">
-                            <li><a href={`${isArabic ? '/ar' : '/en'}/practice-areas/commercial`} class="hover:text-gold transition">{isArabic ? 'القضايا التجارية' : 'Commercial Cases'}</a></li>
-                            <li><a href={`${isArabic ? '/ar' : '/en'}/practice-areas/civil`} class="hover:text-gold transition">{isArabic ? 'القضايا المدنية' : 'Civil Cases'}</a></li>
-                            <li><a href={`${isArabic ? '/ar' : '/en'}/practice-areas/labor`} class="hover:text-gold transition">{isArabic ? 'القضايا العمالية' : 'Labor Cases'}</a></li>
+                            <li><a href={`${isArabic ? '/ar' : '/en'}/practice-areas`} class="hover:text-blue-600 transition">{isArabic ? 'القضايا التجارية' : 'Commercial Cases'}</a></li>
+                            <li><a href={`${isArabic ? '/ar' : '/en'}/practice-areas`} class="hover:text-blue-600 transition">{isArabic ? 'القضايا المدنية' : 'Civil Cases'}</a></li>
+                            <li><a href={`${isArabic ? '/ar' : '/en'}/practice-areas`} class="hover:text-blue-600 transition">{isArabic ? 'القضايا العمالية' : 'Labor Cases'}</a></li>
                         </ul>
                     </div>
 
                     {/* Contact Info */}
                     <div>
-                        <h4 class="text-lg font-bold mb-4 gold-text">
+                        <h4 class="text-lg font-bold mb-4 primary-text">
                             {isArabic ? 'معلومات التواصل' : 'Contact Information'}
                         </h4>
                         <ul class="space-y-3 text-sm">
                             <li class="flex items-center gap-2">
-                                <i class="fas fa-map-marker-alt gold-text"></i>
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
                                 <span>{isArabic ? 'مدينة العين، الإمارات' : 'Al Ain City, UAE'}</span>
                             </li>
                             <li class="flex items-center gap-2">
-                                <i class="fas fa-phone gold-text"></i>
-                                <a href="tel:+971501234567" class="hover:text-gold transition">+971 50 123 4567</a>
+                                <i class="fas fa-phone text-blue-600"></i>
+                                <a href="tel:+971501234567" class="hover:text-blue-600 transition">+971 50 123 4567</a>
                             </li>
                             <li class="flex items-center gap-2">
-                                <i class="fas fa-envelope gold-text"></i>
-                                <a href="mailto:info@alhajeri-law.ae" class="hover:text-gold transition">info@alhajeri-law.ae</a>
+                                <i class="fas fa-envelope text-blue-600"></i>
+                                <a href="mailto:info@alhajeri-law.ae" class="hover:text-blue-600 transition">info@alhajeri-law.ae</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 {/* Copyright */}
-                <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+                <div class="border-t border-gray-300 mt-8 pt-6 text-center text-sm text-gray-600">
                     <p>© {new Date().getFullYear()} {isArabic ? 'ناصر شايع الهاجري - جميع الحقوق محفوظة.' : 'Nasser Shayea Al Hajeri - All rights reserved.'}</p>
                 </div>
             </div>
