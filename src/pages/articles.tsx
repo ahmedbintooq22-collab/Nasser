@@ -11,7 +11,7 @@ export const renderArticlesPage = (c: Context, lang: 'ar' | 'en') => {
   const content = (
     <>
       {/* Hero Section */}
-      <section class="hero-section text-white relative py-32">
+      <section class="hero-section text-white relative min-h-screen flex items-center">
         <div class="container mx-auto px-6 relative z-10">
           <div class="max-w-4xl mx-auto text-center">
             <div class="section-badge mb-8">
@@ -36,7 +36,7 @@ export const renderArticlesPage = (c: Context, lang: 'ar' | 'en') => {
       </section>
 
       {/* Coming Soon Section */}
-      <section class="py-32 bg-white">
+      <section class="min-h-screen flex items-center bg-white">
         <div class="container mx-auto px-6">
           <div class="max-w-3xl mx-auto text-center">
             <div class="elegant-card p-16">
