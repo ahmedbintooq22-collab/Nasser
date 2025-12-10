@@ -7,7 +7,6 @@ import {
   renderServicesPage, 
   renderPracticeAreasPage,
   renderArticlesPage,
-  renderArticlePage,
   renderContactPage 
 } from './pages'
 
